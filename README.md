@@ -1,6 +1,7 @@
 # orchestriongolangcontainer1
 
-This currently works only if orchestrion is ran locally. Need to figure out how to do this via dockerfile
+- This currently works only if orchestrion is ran locally. Need to figure out how to do this via dockerfile
+  - This is resolved by adding orchestrion pin. This is however a bug that needs to be fixed - https://github.com/DataDog/orchestrion/issues/491 
 
 ## Without //dd:span
 - Expected to capture the curl call + gorilla mux router
