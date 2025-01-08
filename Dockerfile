@@ -23,6 +23,8 @@ RUN GOBIN=/usr/local/bin go install github.com/DataDog/orchestrion@latest
 # Build the Go binary
 ENV GOFLAGS="${GOFLAGS} '-toolexec=/usr/local/bin/orchestrion toolexec'"
 
+RUN /usr/local/bin/orchestrion pin
+
 # With the newly instrumented code, manage dependency
 RUN go mod tidy
 
