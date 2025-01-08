@@ -13,6 +13,9 @@ WORKDIR /app
 # Copy go.mod and go.sum files to the working directory
 COPY go.mod go.sum ./
 
+# Add Orchestrion dependency explicitly to go.mod
+RUN go get github.com/DataDog/orchestrion@latest
+
 # Copy the entire application
 COPY . .
 
