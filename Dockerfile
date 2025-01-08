@@ -20,11 +20,11 @@ RUN mkdir -p /usr/local/bin
 
 RUN GOBIN=/usr/local/bin go install github.com/DataDog/orchestrion@latest
 
-# With the newly instrumented code, manage dependency
-RUN go mod tidy
-
 # Build the Go binary
 ENV GOFLAGS="${GOFLAGS} '-toolexec=/usr/local/bin/orchestrion toolexec'"
+
+# With the newly instrumented code, manage dependency
+RUN go mod tidy
 
 # Build the Go application
 RUN go build -o main .
