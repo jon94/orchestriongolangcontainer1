@@ -25,6 +25,7 @@ type Response struct {
 	Message string `json:"message"`
 }
 
+//dd:span
 func apiHandler(w http.ResponseWriter, r *http.Request) {
 
 	// Set the content type to JSON
@@ -38,6 +39,7 @@ func apiHandler(w http.ResponseWriter, r *http.Request) {
 	json.NewEncoder(w).Encode(response)
 }
 
+//dd:span
 func getErrorRequestHandler(w http.ResponseWriter, r *http.Request) {
 
 	// Set the content type to JSON
