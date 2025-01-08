@@ -1,0 +1,33 @@
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  labels:
+    app: simple-orchestrion-go
+    tags.datadoghq.com/env: staging
+    tags.datadoghq.com/service: simple-orchestrion-go
+    tags.datadoghq.com/version: 1.0.0
+  name: simple-orchestrion-go
+spec:
+  replicas: 3
+  selector:
+    matchLabels:
+      app: simple-orchestrion-go
+  template:
+    metadata:
+      labels:
+        admission.datadoghq.com/enabled: "true"
+        app: simple-orchestrion-go
+        tags.datadoghq.com/env: staging
+        tags.datadoghq.com/service: simple-orchestrion-go
+        tags.datadoghq.com/version: 1.0.0
+    spec:
+      containers:
+        - name: go
+          image: jonlimpw/golang-orchestrion:latest
+          env:
+            - name: DD_TRACE_DEBUG
+              value: "true"
+            - name: DD_LOGS_INJECTION
+              value: "true"
+            - name: DD_RUNTIME_METRICS_ENABLED
+              value: "true"
