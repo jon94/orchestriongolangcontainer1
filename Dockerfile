@@ -16,6 +16,10 @@ COPY go.mod go.sum ./
 # Copy the entire application
 COPY . .
 
+RUN mkdir -p /usr/local/bin 
+
+RUN GOBIN=/usr/local/bin go install github.com/DataDog/orchestrion@latest
+
 # With the newly instrumented code, manage dependency
 RUN go mod tidy
 
