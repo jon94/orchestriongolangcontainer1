@@ -1,6 +1,12 @@
 # Use the official Golang base image
 FROM golang:1.23.1-alpine
 
+# Set necessary environment variables needed for our image
+ENV GO111MODULE=on \
+    CGO_ENABLED=0 \
+    GOOS=linux \
+    GOARCH=amd64
+
 # Set the working directory inside the container
 WORKDIR /app
 
