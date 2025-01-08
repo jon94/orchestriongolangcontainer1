@@ -16,11 +16,13 @@ COPY go.mod go.sum ./
 # Copy the entire application
 COPY . .
 
-#orchestrion instrumentation
-RUN go install github.com/datadog/orchestrion@v0.6.0
+#Activate Orchestrion on Dockerfile
+RUN mkdir -p /usr/local/bin 
 
-# Activate Orchestrion
-RUN $(go env GOPATH)/bin/orchestrion -w ./
+RUN GOBIN=/usr/local/bin go install github.com/DataDog/orchestrion@latest
+
+# Build the Go binary
+ENV GOFLAGS="${GOFLAGS} '-toolexec=/usr/local/bin/orchestrion toolexec'"
 
 # With the newly instrumented code, manage dependency
 RUN go mod tidy
