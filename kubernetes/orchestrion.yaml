@@ -23,7 +23,7 @@ spec:
     spec:
       containers:
         - name: go
-          image: jonlimpw/golang-orchestrion:latest
+          image: jonlimpw/golang-orchestrion:latest-1
           env:
             - name: DD_TRACE_DEBUG
               value: "true"
