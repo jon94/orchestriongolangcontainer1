@@ -1,5 +1,5 @@
 # Use the official Golang base image
-FROM golang:1.23
+FROM golang:1.22.10
 
 # Set necessary environment variables needed for our image
 ENV GO111MODULE=on \
@@ -18,7 +18,7 @@ COPY . .
 
 RUN mkdir -p /usr/local/bin 
 
-RUN GOBIN=/usr/local/bin go install github.com/DataDog/orchestrion@latest
+RUN GOBIN=/usr/local/bin go install github.com/DataDog/orchestrion@v1.0.4
 
 # Build the Go binary
 ENV GOFLAGS="${GOFLAGS} '-toolexec=/usr/local/bin/orchestrion toolexec'"
