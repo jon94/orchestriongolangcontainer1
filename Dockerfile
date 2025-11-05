@@ -1,5 +1,5 @@
 # Use the official Golang base image
-FROM golang:1.22.3
+FROM golang:1.22.10
 
 # Set necessary environment variables needed for our image
 ENV GO111MODULE=on \
