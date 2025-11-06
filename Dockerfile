@@ -22,7 +22,7 @@ RUN GOBIN=/usr/local/bin go install github.com/DataDog/orchestrion@v1.0.4
 
 # Build the Go binary
 # ENV GOFLAGS="${GOFLAGS} '-toolexec=/usr/local/bin/orchestrion toolexec'"
-ENV GOFLAGS="-toolexec=/usr/local/bin/orchestrion toolexec"
+ENV GOFLAGS="'-toolexec=/usr/local/bin/orchestrion toolexec'"
 
 RUN /usr/local/bin/orchestrion pin
 
